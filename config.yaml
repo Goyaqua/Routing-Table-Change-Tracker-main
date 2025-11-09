@@ -1,0 +1,46 @@
+# Routing Table Change Tracker Configuration
+
+# Operation Mode: 'ssh' for remote router monitoring, 'local' for local system monitoring
+mode: 'ssh'  # Options: 'ssh' or 'local'
+
+# SSH Router Configuration (only used when mode='ssh')
+ssh_config:
+  enabled: true
+  host: 'localhost'
+  port: 2222
+  username: 'admin'
+  password: 'admin123'  # Alternative: use key_file instead
+  # key_file: '/path/to/private/key' 
+  device_type: 'generic'  # Generic router type
+
+  commands:
+    default: 'vtysh -c "show ip route"'
+
+# Local Mode Configuration (only used when mode='local')
+local_config:
+  command: 'ip route'  # Command to get local routing table
+
+# Monitoring Settings
+monitoring:
+  interval_seconds: 60  # Check interval for daemon mode
+  check_timeout: 30     # Timeout for command execution
+
+# Logging Configuration
+logging:
+  output_dir: './logs'
+  log_extension: '.svc'  # Service log extension
+  enable_console: true
+  file_prefix: 'route_tracker'
+
+# Network Statistics Collection
+statistics:
+  enabled: true
+  collect_connections: true
+  collect_ports: true
+  collect_traffic: true
+  top_ports_count: 10  # Number of top ports to log
+
+# Snapshot Storage
+snapshot:
+  store_previous: true
+  snapshot_file: './logs/last_snapshot.txt'

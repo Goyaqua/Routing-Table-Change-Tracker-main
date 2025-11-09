@@ -1,0 +1,23 @@
+# Core networking tools
+# Note: 'ip' command should be available on the system for local mode
+
+# SSH connectivity for router access (required for SSH mode)
+netmiko>=4.1.0
+paramiko>=2.8.0
+
+# System and network statistics
+psutil>=5.9.0
+
+# Configuration file parsing
+PyYAML>=6.0
+
+# Core Python packages (included in standard library - no installation needed)
+# - subprocess
+# - logging
+# - datetime
+# - difflib
+# - time
+# - os
+# - sys
+# - argparse
+# - typing
